@@ -1,0 +1,10 @@
+files = ['plik1.in','plik2.in','plik3.in','plik4.in','plik5.in']
+import matplotlib.pyplot as plt
+import numpy
+for file in files:
+    x, y = numpy.loadtxt(file, unpack=True)
+    dy = numpy.std(y)
+    plt.plot(x, y, 'o')
+    plt.errorbar(x, y, marker='*', yerr=dy)
+    plt.savefig('{}.pdf'.format(file.split('.')[0]))
+    plt.clf()
